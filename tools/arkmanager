@@ -12,7 +12,7 @@
 set +o allexport
 
 # Script version
-arkstVersion='1.6'
+arkstVersion='1.6.1'
 
 ### The following variables are changed by an installer or package manager, and are excluded from git blob hash calculation
 ### If an override is added, do not put anything after arkstSomeOverride='' in a commit
@@ -24,7 +24,7 @@ arkstTag=''
 arkstCommit=''
 
 # Set this if you are a distribution package maintainer otherwise leave empty
-arkstUsePkgManager=''
+arkstUsePkgManager='HexVertex/ark-server-tools'
 
 # Set this to allow variable expansion in variables sourced from arkmanager.cfg
 arkstRootUseEnv=''
@@ -1334,10 +1334,10 @@ doRun() {
   while [ $restartserver -ne 0 ]; do
     echo -n "$(timestamp): Running"
     notify "${notifyMsgStarting:-Starting}"
-    printf " %q" "$arkserverroot/$arkserverexec" "$arkserveropts" "${arkextraopts[@]}"
+    printf " %q" $exec_prefix "$arkserverroot/$arkserverexec" "$arkserveropts" "${arkextraopts[@]}"
     echo
     # Put the server process into the background so we can monitor it
-    "$arkserverroot/$arkserverexec" "$arkserveropts" "${arkextraopts[@]}" &
+    $exec_prefix "$arkserverroot/$arkserverexec" "$arkserveropts" "${arkextraopts[@]}" &
     # Grab the server PID
     serverpid=$!
     echo "$serverpid" >"${arkserverroot}/${arkserverpidfile}"

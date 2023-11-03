@@ -4,7 +4,7 @@
 # Net Installer, used with curl
 #
 
-arkstGithubRepo="arkmanager/ark-server-tools"
+arkstGithubRepo="HexVertex/ark-server-tools"
 
 steamcmd_user="$1"
 shift
