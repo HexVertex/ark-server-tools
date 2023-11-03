@@ -428,7 +428,7 @@ getArkServerSetting() {
       return
     fi
   done
-  local val="$(tr -d '\0\376\377' <"${arkserverroot}/${arkserverdir}/Saved/Config/LinuxServer/GameUserSettings.ini" | sed -n '/^\[ServerSettings\]/,/^\[.*\]/{s/^'"$1"'[[:space:]]*=[[:space:]]*//ip;}' )"
+  local val="$(tr -d '\0\376\377' <"${arkserverroot}/${arkserverdir}/Saved/Config/${serverConfigFolderOverride:-LinuxServer}/GameUserSettings.ini" | sed -n '/^\[ServerSettings\]/,/^\[.*\]/{s/^'"$1"'[[:space:]]*=[[:space:]]*//ip;}' )"
   if [ -n "$val" ]; then
     echo "$val"
   else
@@ -1471,7 +1471,7 @@ doStart() {
     logprint "Start aborted due to server already running - pid: $serverpid"
   else
     local saverootdir="${arkserverroot}/${arkserverdir}/Saved"
-    local savedcfgdir="${saverootdir}/Config/LinuxServer"
+    local savedcfgdir="${saverootdir}/Config/${serverConfigFolderOverride:-LinuxServer}"
     local prestart="${configfile%.cfg}.start"
     local gusini="${configfile%.cfg}.GameUserSettings.ini"
     local gameini="${configfile%.cfg}.Game.ini"
@@ -3065,7 +3065,7 @@ doBackup(){
   local backupdir="${arkbackupdir}/${datestamp}"
   local backupdirdaily="${arkbackupdir}/${daystamp}"
   local saverootdir="${arkserverroot}/${arkserverdir}/Saved"
-  local savedcfgdir="${saverootdir}/Config/LinuxServer"
+  local savedcfgdir="${saverootdir}/Config/${serverConfigFolderOverride:-LinuxServer}"
   local savedir="$(getSavedArksDirectory "${saverootdir}")"
   local clusterdir="$(getArkServerSetting "ClusterDirOverride" "${saverootdir}/clusters/$(getArkServerSetting "clusterid")")"
   local mapname="$(getServerMapName)"
@@ -3306,7 +3306,7 @@ doBackup(){
 #
 doRestore(){
   local saverootdir="${arkserverroot}/${arkserverdir}/Saved"
-  local savedcfgdir="${saverootdir}/Config/LinuxServer"
+  local savedcfgdir="${saverootdir}/Config/${serverConfigFolderOverride:-LinuxServer}"
   local savedir="$(getSavedArksDirectory "${saverootdir}")"
   local savedir="$(getSavedArksDirectory "${saverootdir}")"
   local clusterdir="$(getArkServerSetting "ClusterDirOverride" "${saverootdir}/clusters/$(getArkServerSetting "clusterid")")"
