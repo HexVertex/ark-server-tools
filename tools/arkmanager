@@ -1334,10 +1334,10 @@ doRun() {
   while [ $restartserver -ne 0 ]; do
     echo -n "$(timestamp): Running"
     notify "${notifyMsgStarting:-Starting}"
-    printf " %q" $exec_prefix "$arkserverroot/$arkserverexec" "$arkserveropts" "${arkextraopts[@]}"
+    printf " %q" $arkserverexecPrefix "$arkserverroot/$arkserverexec" "$arkserveropts" "${arkextraopts[@]}"
     echo
     # Put the server process into the background so we can monitor it
-    $exec_prefix "$arkserverroot/$arkserverexec" "$arkserveropts" "${arkextraopts[@]}" &
+    $arkserverexecPrefix "$arkserverroot/$arkserverexec" "$arkserveropts" "${arkextraopts[@]}" &
     # Grab the server PID
     serverpid=$!
     echo "$serverpid" >"${arkserverroot}/${arkserverpidfile}"
