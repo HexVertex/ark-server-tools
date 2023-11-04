@@ -869,3 +869,15 @@ Common ARK options
 
 `arkflag_NoBattlEye=true`::
     Disables BattlEye
+
+Changes for ASA
+---------------
+This fork contains some minor changes to the original scripts to allow the tools to work with ASA. , including:
+
+* Added options to arkmanager.cfg:
+	- `arkserverexecPrefix` will put this in front of calls to the executable. Can set this to `"wine"` in case you'd like to use Wine to rune the `exe`.
+	- `serverConfigFolderOverride` value will be used to redirect the config folder locations, as opposed to the default `LinuxServer` directory
+* Changed package ID for the server package `ARK: Survival Ascended Dedicated Server`.
+* Changed some default config parameters to their defaults for ASA, such as ports and mapname
+
+Currently no adjustments have been made to facilitate modded servers.
