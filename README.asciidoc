@@ -882,5 +882,5 @@ This fork contains some minor changes to the original scripts to allow the tools
 * Changed package ID for the server package `ARK: Survival Ascended Dedicated Server`.
 * Changed some default config parameters to their defaults for ASA, such as ports and mapname. You should still be able to run Survival Evolved server instances through this fork (possibly even simultaniously if system resources allow it) by setting the appropriate configuration items.
 
-Tested to be working with Wine 8.20. Alternatively to calling wine with `arkserverexecPrefix` you can set-up a binfmt binding to call `exe`s natively.
+Tested to be working with Wine 8.20. Alternatively to calling wine with `arkserverexecPrefix` you can set-up a binfmt binding to call windows executables (exe) natively.
 Currently no adjustments have been made to facilitate modded servers, but they should work as is through the `arkopt_mods="<mod_ids>"` configuration.
